@@ -1,5 +1,5 @@
-import ch2.Cash;
-import ch2.CashWithoutEqualsAndHashCode;
+package ch02;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,5 +20,15 @@ public class Ch2Test {
         Cash x = new Cash(29,95,"USD");
         Cash y = new Cash(29,95,"USD");
         Assertions.assertEquals(x,y);
+    }
+
+    @Test
+    @DisplayName("Cash Interface")
+    public void cashInterface(){
+        Employee employee = new Employee(new DefaultCash());
+        Assertions.assertEquals(Integer.MAX_VALUE,employee.toCents());
+
+        Employee employeeUsd = new Employee(new UsdCash());
+        Assertions.assertEquals(Integer.MIN_VALUE,employeeUsd.toCents());
     }
 }

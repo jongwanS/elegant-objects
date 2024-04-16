@@ -1,4 +1,4 @@
-package ch2;
+package ch02;
 
 public class CashWithoutEqualsAndHashCode {
     private Integer digits;
