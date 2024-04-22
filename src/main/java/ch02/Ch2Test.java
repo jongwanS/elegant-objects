@@ -147,41 +147,42 @@ public class Ch2Test {
 
     public static void main(String[] args) {
         // HashMap 생성
-        HashMap<CustomKey, String> map = new HashMap<>();
+        HashMap<Student, String> studentMap = new HashMap<>();
 
-        // 해시 충돌을 일으키는 서로 다른 객체 생성
-        CustomKey key1 = new CustomKey(1);
-        CustomKey key2 = new CustomKey(1); // key1과 동일한 해시 코드를 가짐
+        Student student1 = new Student(1);
+        Student student2 = new Student(2);
 
-        // 객체를 HashMap에 추가
-        map.put(key1, "Value 1");
-        map.put(key2, "Value 2");
+        // 두 학생이 같은 해시 코드를 가지도록 함
+        System.out.println("HashCode of student1: " + student1.hashCode());
+        System.out.println("HashCode of student2: " + student2.hashCode());
 
-        // 값 출력
-        System.out.println("Value 1: " + map.get(key1)); // key1으로 저장된 값 출력
-        System.out.println("Value 2: " + map.get(key2)); // key2로 저장된 값 출력
+        studentMap.put(student1, "John");
+        studentMap.put(student2, "Doe");
+
+        // 해시 충돌 발생으로 두 학생이 같은 해시 버킷에 매핑되었을 것
+        System.out.println("Student 1's name: " + studentMap.get(student1));
+        System.out.println("Student 2's name: " + studentMap.get(student2));
     }
 
-    static class CustomKey {
+    static class Student {
         private int id;
 
-        public CustomKey(int id) {
+        public Student(int id) {
             this.id = id;
         }
 
-        // hashCode() 메서드 오버라이드
         @Override
         public int hashCode() {
-            return id; // id 필드를 해시 코드로 사용
+            // 모든 학생의 hashCode를 1로 설정하여 충돌을 일으킴
+            return 1;
         }
 
-        // equals() 메서드 오버라이드
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
             if (obj == null || getClass() != obj.getClass()) return false;
-            CustomKey customKey = (CustomKey) obj;
-            return id == customKey.id;
+            Student student = (Student) obj;
+            return id == student.id;
         }
     }
 }
