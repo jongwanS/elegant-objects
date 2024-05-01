@@ -185,5 +185,25 @@ public class Ch2Test {
             return id == student.id;
         }
     }
+
+    @Test
+    @DisplayName("Cash 5와 Cash 6을 더하면, Cash 11을 리턴한다.")
+    public void plusTest(){
+        Assertions.assertEquals(
+                new Cash(5,0,"USD")
+                        .plus(new Cash(6,0,"USD"))
+                ,new Cash(11,0,"USD")
+        );
+    }
+
+    @Test
+    @DisplayName("Cash 5에 6을 곱하면, Cash 30을 리턴한다.")
+    public void mulTest(){
+        Assertions.assertEquals(
+                new Cash(5,0,"USD")
+                        .mul(6)
+                ,new Cash(30,0,"USD")
+        );
+    }
 }
 

@@ -1,5 +1,7 @@
 package ch02;
 
+import ch02.mock08.NYSE;
+
 import java.util.Objects;
 
 public class Cash {
@@ -13,6 +15,29 @@ public class Cash {
         this.currency = currency;
     }
 
+    public Cash plus(Cash cash){
+        return new Cash(
+          this.digits+cash.digits,
+          this.cents+cash.cents,
+          this.currency
+        );
+    }
+
+    public Cash mul(final int mul){
+        return new Cash(
+                this.digits*mul,
+                this.cents*mul,
+                this.currency
+        );
+    }
+
+    public Integer getDigits() {
+        return digits;
+    }
+
+    public Integer getCents() {
+        return cents;
+    }
 
     @Override
     public boolean equals(Object o) {
