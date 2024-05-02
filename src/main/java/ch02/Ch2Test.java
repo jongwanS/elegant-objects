@@ -145,6 +145,18 @@ public class Ch2Test {
         Assertions.assertEquals(50, cash.getCents());   // 예상되는 cents 값
     }
 
+    @Test
+    @DisplayName("CashFailureAtomicityImmutableVariable2")
+    public void CashFailureAtomicityImmutableVariable2(){
+
+        CashFailureAtomicityImmutableVariable cash = new CashFailureAtomicityImmutableVariable(10,50);
+        Assertions.assertThrows(RuntimeException.class,()-> {
+            cash.mul(2);
+        });
+        Assertions.assertEquals(10, cash.getDollars()); // 예상되는 dollars 값
+        Assertions.assertEquals(50, cash.getCents());   // 예상되는 cents 값
+    }
+
     public static void main(String[] args) {
         // HashMap 생성
         HashMap<Student, String> studentMap = new HashMap<>();

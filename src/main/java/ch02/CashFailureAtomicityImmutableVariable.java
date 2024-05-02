@@ -1,5 +1,6 @@
 package ch02;
 
+
 public class CashFailureAtomicityImmutableVariable {
     private final int dollars;
     private final int cents;
