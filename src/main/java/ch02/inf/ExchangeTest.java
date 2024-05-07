@@ -44,7 +44,6 @@ public class ExchangeTest {
     @Test
     @DisplayName("공통 기능을 추출하고 코드 중복을 피할 수 있다.")
     public void exchangeTestDecorator(){
-        Exchange.Smart good = new Exchange.Smart(new NYSE());
         Exchange.Fast fast = new Exchange.Fast(new NYSE());
         Assertions.assertEquals(1F,fast.rate("USD","USD"));
     }
