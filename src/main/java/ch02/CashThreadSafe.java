@@ -21,4 +21,12 @@ public class CashThreadSafe {
     public int getCents() {
         return cents;
     }
+
+    @Override
+    public String toString() {
+        return "CashThreadSafe{" +
+                "dollars=" + dollars +
+                ", cents=" + cents +
+                '}';
+    }
 }

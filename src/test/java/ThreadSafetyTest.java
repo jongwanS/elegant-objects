@@ -59,7 +59,7 @@ public class ThreadSafetyTest {
         final Callable<Object> script = () -> {
             start.await(); // 카운트다운 이벤트를 기다린다.
             cash.mul(2);
-            System.out.println(cash);
+            System.out.println(cash.toString());
             return null;
         };
         final ExecutorService svc = Executors.newCachedThreadPool();
